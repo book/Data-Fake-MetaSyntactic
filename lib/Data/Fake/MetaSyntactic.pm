@@ -6,7 +6,7 @@ use Exporter 5.57 qw( import );
 
 our @EXPORT = qw( fake_meta fake_metatheme );
 
-use Acme::MetaSyntactic;
+use Acme::MetaSyntactic ();
 my @themes = grep $_ ne 'any', Acme::MetaSyntactic->themes;
 
 sub fake_meta {
