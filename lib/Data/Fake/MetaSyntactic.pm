@@ -11,7 +11,7 @@ my @themes = grep $_ ne 'any', Acme::MetaSyntactic->themes;
 
 sub fake_meta {
     my ($theme) = @_;
-    $theme ||= $themes[ rand @themes ];
+    $theme ||= fake_metatheme()->();
 
     my $meta = Acme::MetaSyntactic->new;
     return sub {
