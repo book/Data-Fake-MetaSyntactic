@@ -9,7 +9,7 @@ use List::Util qw( min );
 
 my $count = 5;
 
-plan tests => 2 + $count * ( $count + 1 ) + 3 + $count * 2;
+plan tests => 2 + $count * ( $count + 1 ) + 3 + $count * 3;
 
 my %theme;
 @theme{ grep $_ ne 'any', Acme::MetaSyntactic->themes } = ();
@@ -22,18 +22,27 @@ for my $args ( [], [ 'foo' ] ) {
 }
 
 my $metatheme = fake_metatheme;
+my @themes;
+my %item;
 for ( 1 .. $count ) {
 
     my $theme = $metatheme->();
     ok( exists $theme{$theme}, "$theme is an installed theme" );
+    push @themes, $theme;
 
-    my %item;
-    @item{ Acme::MetaSyntactic->new($theme)->name(0) } = ();
+    @{ $item{$theme} }{ Acme::MetaSyntactic->new($theme)->name(0) } = ();
 
     for ( 1 .. $count ) {
         my $item = fake_meta($theme)->();
-        ok( exists $item{$item}, "$item is an item from $theme" );
+        ok( exists $item{$theme}{$item}, "$item is an item from $theme" );
     }
+}
+
+# fake_meta with a coderef
+for ( 1 .. $count ) {
+    my $item = fake_meta( sub { $themes[ rand @themes ] } )->();
+    my ($theme) = grep exists $item{$_}{$item}, keys %item;
+    ok( $theme, "$item is an item from $theme" );
 }
 
 # fake_metacategory
