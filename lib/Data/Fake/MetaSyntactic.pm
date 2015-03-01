@@ -23,6 +23,15 @@ sub fake_metatheme {
     return sub { $themes[ rand @themes ] };
 }
 
+sub _categories {
+    my ($theme) = @_;
+    require "Acme/MetaSyntactic/$theme.pm";
+    return (
+        $theme => map "$theme/$_",
+        eval { "Acme::MetaSyntactic::$theme"->categories }
+    );
+}
+
 1;
 
 __END__
