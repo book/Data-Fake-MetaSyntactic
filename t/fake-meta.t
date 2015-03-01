@@ -9,7 +9,7 @@ use List::Util qw( min );
 
 my $count = 5;
 
-plan tests => 2 + $count * ( $count + 1 ) + 3 + $count * 3;
+plan tests => 2 + $count * ( $count + 1 ) + 3 + $count * 4;
 
 my %theme;
 @theme{ grep $_ ne 'any', Acme::MetaSyntactic->themes } = ();
@@ -43,6 +43,12 @@ for ( 1 .. $count ) {
     my $item = fake_meta( sub { $themes[ rand @themes ] } )->();
     my ($theme) = grep exists $item{$_}{$item}, keys %item;
     ok( $theme, "$item is an item from $theme" );
+}
+
+# fake_meta with no parameter
+for ( 1 .. $count ) {
+    my $item = fake_meta()->();
+    like( $item, qr/^[A-Za-z_]\w{0,250}$/, "$item looks legit" );
 }
 
 # fake_metacategory
