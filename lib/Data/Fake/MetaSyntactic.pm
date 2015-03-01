@@ -127,6 +127,25 @@ Generate a random item from a different random theme each time:
 
     $generator = fake_meta( fake_metatheme() );
 
+=item *
+
+Generate a random item from a random category from a given theme:
+
+    $generator = fake_meta( fake_metacategory( $theme ) );
+
+=item *
+
+Generate a random item from a randomly selected theme, with
+a random category each time:
+
+    $generator = fake_meta( fake_metacategory() );
+
+=item *
+
+Generate a random item from a different random theme/category each time:
+
+    $generator = fake_meta( fake_metacategory( fake_metatheme() ) );
+
 =back
 
 =head1 SEE ALSO
