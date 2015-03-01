@@ -9,7 +9,7 @@ use List::Util qw( min );
 
 my $count = 5;
 
-plan tests => 2 + $count * ( $count + 1 ) + 3 + $count;
+plan tests => 2 + $count * ( $count + 1 ) + 3 + $count * 2;
 
 my %theme;
 @theme{ grep $_ ne 'any', Acme::MetaSyntactic->themes } = ();
@@ -52,6 +52,16 @@ for my $args ( [], [ fake_metatheme()->() ], [ fake_metatheme() ] ) {
         my $category = $metacategory->();
         like( $category, qr{^$theme(?:/|$)}, "$category belongs to $theme" );
     }
+}
+
+# pick random categories, and ensure at least one of them has a /
+my $metacategory = fake_metacategory( fake_metatheme() );
+my @categories;
+push @categories, $metacategory->()
+    until @categories >= $count && $categories[-1] =~ m:/:;
+for my $category ( splice @categories, -$count ) {
+    my ($theme) = split m:/:, $category;
+    like( $category, qr{^$theme(?:/|$)}, "$category belongs to $theme" );
 }
 
 done_testing;
