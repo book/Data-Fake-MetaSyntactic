@@ -82,8 +82,8 @@ L<Acme::MetaSyntactic> theme supports categories.
 
 C<$theme> can be a code reference that returns a theme name when executed.
 
-If no C<$theme> is given, a random theme is picked among the installed
-ones.
+If no C<$theme> is given, a random theme is picked for the generator
+among the installed ones.
 
 =head2 fake_metatheme
  
