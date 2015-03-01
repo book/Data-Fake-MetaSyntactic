@@ -53,7 +53,7 @@ All functions are exported by default.
 Returns a generator that provides a randomly selected item from the
 given L<Acme::MetaSyntactic> theme.
 
-If no C<$theme> is given, a random theme is picked, among the installed
+If no C<$theme> is given, a random theme is picked among the installed
 ones.
  
 =head2 fake_metatheme
