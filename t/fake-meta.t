@@ -9,7 +9,7 @@ use List::Util qw( min );
 
 my $count = 5;
 
-plan tests => 2 + $count * ( $count + 1 );
+plan tests => 2 + $count * ( $count + 1 ) + 3;
 
 my %theme;
 @theme{ grep $_ ne 'any', Acme::MetaSyntactic->themes } = ();
@@ -34,6 +34,12 @@ for ( 1 .. $count ) {
         my $item = fake_meta($theme)->();
         ok( exists $item{$item}, "$item is an item from $theme" );
     }
+}
+
+# fake_metacategory
+for my $args ( [], [ fake_metatheme()->() ], [ fake_metatheme() ] ) {
+    my $metacategory = fake_metacategory( @$args );
+    is( ref $metacategory, 'CODE', "fake_metacategory() returns a coderef" );
 }
 
 done_testing;
