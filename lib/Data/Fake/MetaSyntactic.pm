@@ -97,8 +97,8 @@ among the installed ones.
     $generator = fake_metacategory( $theme );
 
 Returns a generator that provides a random category from an installed
-L<Acme::MetaSyntactic> theme. The categories returned by the generator
-can be passed to L</fake_meta>.
+L<Acme::MetaSyntactic> theme. The theme itself is a category of its own.
+The categories returned by the generator can be passed to L</fake_meta>.
 
 C<$theme> can be a code reference that returns a theme name when executed.
 
