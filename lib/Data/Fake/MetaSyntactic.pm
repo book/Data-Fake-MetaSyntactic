@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use Exporter 5.57 qw( import );
 
-our @EXPORT = qw( fake_meta fake_metatheme );
+our @EXPORT = qw( fake_meta fake_metatheme fake_metacategory );
 
 use Acme::MetaSyntactic ();
 my @themes = grep $_ ne 'any', Acme::MetaSyntactic->themes;
@@ -21,6 +21,21 @@ sub fake_meta {
 
 sub fake_metatheme {
     return sub { $themes[ rand @themes ] };
+}
+
+sub fake_metacategory {
+    my ($theme) = @_;
+    $theme ||= fake_metatheme()->();
+
+    return ref $theme eq 'CODE'
+        ? sub {
+            my @categories = _categories( $theme->() );
+            $categories[ rand @categories ];
+        }
+        : do {
+            my @categories = _categories($theme);
+            sub { $categories[ rand @categories ] };
+        };
 }
 
 sub _categories {
