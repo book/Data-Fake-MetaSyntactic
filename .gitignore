@@ -6,6 +6,7 @@ _build*
 pm_to_blib*
 *.tar.gz
 .lwpcookies
+.build
 Data-Fake-MetaSyntactic-*
 cover_db
 *.bak
