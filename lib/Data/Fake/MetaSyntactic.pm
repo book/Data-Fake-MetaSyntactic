@@ -59,9 +59,10 @@ Data::Fake::MetaSyntactic - Fake metasyntactic data generators
  
     use Data::Fake::MetaSyntactic;
 
-    fake_metatheme()->();   # foo, donmartin, weekdays, etc.
-    fake_meta()->();        # titi, GING_GOYNG, wednesday, etc.
- 
+    fake_metatheme()->();       # foo,    donmartin,  weekdays,    etc.
+    fake_metacategory()->();    # foo/fr, donmartin,  weekdays/nl, etc.
+    fake_meta()->();            # titi,   GING_GOYNG, vrijdag,     etc.
+
 =head1 DESCRIPTION
  
 This module provides fake data generators for L<Acme::MetaSyntactic>.
