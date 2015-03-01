@@ -9,7 +9,7 @@ use List::Util qw( min );
 
 my $count = 5;
 
-plan tests => 2 + $count * ( $count + 1 ) + 3;
+plan tests => 2 + $count * ( $count + 1 ) + 3 + $count;
 
 my %theme;
 @theme{ grep $_ ne 'any', Acme::MetaSyntactic->themes } = ();
@@ -40,6 +40,18 @@ for ( 1 .. $count ) {
 for my $args ( [], [ fake_metatheme()->() ], [ fake_metatheme() ] ) {
     my $metacategory = fake_metacategory( @$args );
     is( ref $metacategory, 'CODE', "fake_metacategory() returns a coderef" );
+}
+
+# fake_metacategory() picks one theme at random
+{
+    my $metacategory = fake_metacategory();
+    my ($theme) = split m:/:, $metacategory->();
+
+    # same theme each time
+    for ( 1 .. $count ) {
+        my $category = $metacategory->();
+        like( $category, qr{^$theme(?:/|$)}, "$category belongs to $theme" );
+    }
 }
 
 done_testing;
