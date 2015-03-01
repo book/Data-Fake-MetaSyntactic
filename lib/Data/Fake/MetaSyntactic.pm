@@ -92,6 +92,19 @@ ones.
 Returns a generator that provides a random L<Acme::MetaSyntactic> theme name,
 among the installed ones.
 
+=head2 fake_metacategory
+
+    $generator = fake_metacategory( $theme );
+
+Returns a generator that provides a random category from an installed
+L<Acme::MetaSyntactic> theme. The categories returned by the generator
+can be passed to L</fake_meta>.
+
+C<$theme> can be a code reference that returns a theme name when executed.
+
+If no C<$theme> is given, a random theme is picked for the generator
+among the installed ones.
+
 =head1 EXAMPLES
 
 =over 4
