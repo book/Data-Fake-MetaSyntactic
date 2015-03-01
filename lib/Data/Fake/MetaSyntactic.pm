@@ -128,6 +128,10 @@ Generate a random item from a different random theme each time:
 
     $generator = fake_meta( fake_metatheme() );
 
+All themes have a default category. Since C<fake_metatheme()> returns
+a generator that only produces theme names, that implies the default
+category is always used in that case.
+
 =item *
 
 Generate a random item from a random category from a given theme:
