@@ -153,6 +153,17 @@ Generate a random item from a different random theme/category each time:
 
 =back
 
+=head1 TRIVIA
+
+IRC is one my source of inspiration (actually, the people on it).
+It seems L<Acme::MetaSyntactic> also inspires sillyness in people:
+
+    #perl-qa on 2015-02-03 (UTC times)
+    04:23 <@xdg> BooK, I invite you to read this talk I gave and then contribute Data::Fake::MetaSyntactic.  :-) http://tinyurl.com/pd5agr6 [ http://www.dagolden.com/wp-content/uploads/2009/04/Taking-Your-Perl-to-Eleven.pdf ]
+    07:14 <@BooK> xdg: but I did Data::Faker::MetaSyntactic already!?
+    07:35 <@BooK> ooh, different module
+    08:03 <@BooK> xdg: I love it. will make the module
+
 =head1 SEE ALSO
 
 L<Data::Fake>, L<Acme::MetaSyntactic>, L<Task::MetaSyntactic>.
