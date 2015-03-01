@@ -68,6 +68,30 @@ ones.
 Returns a generator that provides a random L<Acme::MetaSyntactic> theme name,
 among the installed ones.
 
+=head1 EXAMPLES
+
+=over 4
+
+=item *
+
+Generate a random item from a given theme
+
+    $generator = fake_meta( $theme );
+
+=item *
+
+Generate a random item from a randomly selected theme
+
+    $generator = fake_meta();
+
+=item *
+
+Generate a random item from a different random theme each time
+
+    $generator = fake_meta( fake_metatheme() );
+
+=back
+
 =head1 SEE ALSO
 
 L<Data::Fake>, L<Acme::MetaSyntactic>, L<Task::MetaSyntactic>.
