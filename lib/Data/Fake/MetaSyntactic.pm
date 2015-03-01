@@ -63,6 +63,10 @@ ones.
 Returns a generator that provides a random L<Acme::MetaSyntactic> theme name,
 among the installed ones.
 
+=head1 SEE ALSO
+
+L<Data::Fake>, L<Acme::MetaSyntactic>, L<Task::MetaSyntactic>.
+
 =head1 AUTHOR
  
 Philippe Bruhat (BooK), <book@cpan.org>.
